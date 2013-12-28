@@ -1,9 +1,9 @@
 {
-  "name": "Remove useless functionality",
+  "name": "Cleans Facebook",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.io",
-  "homepage_url": "http://extensionizr.com",
+  "description": "Removes newsfeed, people you may know, pages you may like, groups you may like",
+  "homepage_url": "www.sumanyusharma.com",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
