@@ -1,10 +1,10 @@
 $ ->
   removeSelectorsById = (selectors) ->
-    removeSelectors(selectors, document.getElementById)
+    removeSelectors(selectors.map((selector) -> document.getElementById(selector)))
 
-  removeSelectors = (selectors, fn) ->
+  removeSelectors = (selectors) ->
     selectors.forEach (selector) ->
-      $(fn(selector)).remove()
+      $(selector).remove()
 
   # Remove sidebars on the right
   removeSelectorsById [

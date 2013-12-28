@@ -3,11 +3,13 @@ $(function() {
   var removeSelectors, removeSelectorsById, removedFriendsYouMayKnow;
 
   removeSelectorsById = function(selectors) {
-    return removeSelectors(selectors, document.getElementById);
+    return removeSelectors(selectors.map(function(selector) {
+      return document.getElementById(selector);
+    }));
   };
-  removeSelectors = function(selectors, fn) {
+  removeSelectors = function(selectors) {
     return selectors.forEach(function(selector) {
-      return $(fn(selector)).remove();
+      return $(selector).remove();
     });
   };
   removeSelectorsById(['pagelet_ego_pane', 'pagelet_ego_contextual_group', 'topnews_main_stream_408239535924329']);
