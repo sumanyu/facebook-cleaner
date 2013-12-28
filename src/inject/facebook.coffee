@@ -15,19 +15,23 @@ $ ->
     'topnews_main_stream_408239535924329'
   ]
 
-  execAfterLoading = (testBoolean, existenceSelector, fn) ->
+  execAfterLoading = (testBoolean, existenceSelectorId, fn) ->
+
+    console.log "testBoolean #{testBoolean}"
+    console.log "existenceSelectorId #{existenceSelectorId}"
+    console.log fn
+
     tid = undefined
 
     unless testBoolean
       tryAgain = ->
-        if existenceSelector
+        if document.getElementById("#{existenceSelectorId}")
 
           fn()
           
           testBoolean = true
           clearInterval tid
         else
-          console.log "Trying to remove friends"
           tid = setTimeout(tryAgain, 100)
 
       tid = setTimeout(tryAgain, 100)
@@ -38,7 +42,7 @@ $ ->
   # Removes people you may know and pages you may like
   fbRequestsJewel.onclick = ->
 
-    execAfterLoading removedFriendsYouMayKnow, document.getElementById("fbRequestsPYMKContainer"), ->
+    removedFriendsYouMayKnow = execAfterLoading removedFriendsYouMayKnow, "fbRequestsPYMKContainer", ->
       console.log "Removing friends"
 
       removeSelectorsById ["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]

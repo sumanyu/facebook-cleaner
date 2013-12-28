@@ -13,18 +13,20 @@ $(function() {
     });
   };
   removeSelectorsById(['pagelet_ego_pane', 'pagelet_ego_contextual_group', 'topnews_main_stream_408239535924329']);
-  execAfterLoading = function(testBoolean, existenceSelector, fn) {
+  execAfterLoading = function(testBoolean, existenceSelectorId, fn) {
     var tid, tryAgain;
 
+    console.log("testBoolean " + testBoolean);
+    console.log("existenceSelectorId " + existenceSelectorId);
+    console.log(fn);
     tid = void 0;
     if (!testBoolean) {
       tryAgain = function() {
-        if (existenceSelector) {
+        if (document.getElementById("" + existenceSelectorId)) {
           fn();
           testBoolean = true;
           return clearInterval(tid);
         } else {
-          console.log("Trying to remove friends");
           return tid = setTimeout(tryAgain, 100);
         }
       };
@@ -34,7 +36,7 @@ $(function() {
   };
   removedFriendsYouMayKnow = false;
   return fbRequestsJewel.onclick = function() {
-    return execAfterLoading(removedFriendsYouMayKnow, document.getElementById("fbRequestsPYMKContainer"), function() {
+    return removedFriendsYouMayKnow = execAfterLoading(removedFriendsYouMayKnow, "fbRequestsPYMKContainer", function() {
       console.log("Removing friends");
       removeSelectorsById(["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]);
       return $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr("style");
