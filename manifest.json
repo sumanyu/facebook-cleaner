@@ -1,0 +1,36 @@
+{
+  "name": "Remove useless functionality",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This extension was created with the awesome extensionizr.io",
+  "homepage_url": "http://extensionizr.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "persistent": true,
+		"scripts": [
+			"src/bg/background.js"
+		]
+  },
+	"permissions":[
+		"*://*.facebook.com/*",
+		"tabs",
+		"background"
+	],
+  "content_scripts": [
+    {
+			"run_at": "document_idle",
+      "matches": [
+        "*://*.facebook.com/*"
+      ],
+      "js": [
+				"js/jquery/jquery.js",
+        "src/inject/facebook.js"
+      ]
+    }
+  ]
+}
