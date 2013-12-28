@@ -37,26 +37,14 @@ $ ->
   removedFriendsYouMayKnow = false
   # Removes people you may know and pages you may like
   fbRequestsJewel.onclick = ->
-    tid = undefined
-    # console.log "Clicking friend request"
 
-    unless removedFriendsYouMayKnow
-      removeFriends = ->
-        if document.getElementById("fbRequestsPYMKContainer")
-          console.log "Removing friends"
+    execAfterLoading removedFriendsYouMayKnow, document.getElementById("fbRequestsPYMKContainer"), ->
+      console.log "Removing friends"
 
-          removeSelectorsById ["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]
+      removeSelectorsById ["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]
 
-          # Remove inline width and height from scroll panel
-          $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr "style"
-
-          removedFriendsYouMayKnow = true
-          clearInterval tid
-        else
-          console.log "Trying to remove friends"
-          tid = setTimeout(removeFriends, 100)
-
-      tid = setTimeout(removeFriends, 100)
+      # Remove inline width and height from scroll panel
+      $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr "style"  
 
   # didScroll = false
 

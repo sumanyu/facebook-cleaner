@@ -34,23 +34,10 @@ $(function() {
   };
   removedFriendsYouMayKnow = false;
   return fbRequestsJewel.onclick = function() {
-    var removeFriends, tid;
-
-    tid = void 0;
-    if (!removedFriendsYouMayKnow) {
-      removeFriends = function() {
-        if (document.getElementById("fbRequestsPYMKContainer")) {
-          console.log("Removing friends");
-          removeSelectorsById(["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]);
-          $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr("style");
-          removedFriendsYouMayKnow = true;
-          return clearInterval(tid);
-        } else {
-          console.log("Trying to remove friends");
-          return tid = setTimeout(removeFriends, 100);
-        }
-      };
-      return tid = setTimeout(removeFriends, 100);
-    }
+    return execAfterLoading(removedFriendsYouMayKnow, document.getElementById("fbRequestsPYMKContainer"), function() {
+      console.log("Removing friends");
+      removeSelectorsById(["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]);
+      return $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr("style");
+    });
   };
 });
