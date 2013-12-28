@@ -17,9 +17,9 @@ $ ->
 
   execAfterLoading = (testBoolean, existenceSelectorId, fn) ->
 
-    console.log "testBoolean #{testBoolean}"
-    console.log "existenceSelectorId #{existenceSelectorId}"
-    console.log fn
+    # console.log "testBoolean #{testBoolean}"
+    # console.log "existenceSelectorId #{existenceSelectorId}"
+    # console.log fn
 
     tid = undefined
 
@@ -49,6 +49,15 @@ $ ->
 
       # Remove inline width and height from scroll panel
       $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr "style"  
+
+  removedNewsFeed = false
+  removeNewsFeedAfterLoading = ->
+    removedNewsFeed = execAfterLoading removedNewsFeed, "topnews_main_stream_408239535924329", ->
+      console.log "Removing newsfeed"
+      removeSelectorsById ["topnews_main_stream_408239535924329"]
+
+  # Remove news feed when you click logo
+  pageLogo.addEventListener 'click', removeNewsFeedAfterLoading, false
 
   # didScroll = false
 
