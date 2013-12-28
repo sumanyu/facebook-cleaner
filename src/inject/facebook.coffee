@@ -15,6 +15,25 @@ $ ->
     'topnews_main_stream_408239535924329'
   ]
 
+  execAfterLoading = (testBoolean, existenceSelector, fn) ->
+    tid = undefined
+
+    unless testBoolean
+      tryAgain = ->
+        if existenceSelector
+
+          fn()
+          
+          testBoolean = true
+          clearInterval tid
+        else
+          console.log "Trying to remove friends"
+          tid = setTimeout(tryAgain, 100)
+
+      tid = setTimeout(tryAgain, 100)
+
+    testBoolean
+
   removedFriendsYouMayKnow = false
   # Removes people you may know and pages you may like
   fbRequestsJewel.onclick = ->
@@ -23,7 +42,6 @@ $ ->
 
     unless removedFriendsYouMayKnow
       removeFriends = ->
-        tid = undefined
         if document.getElementById("fbRequestsPYMKContainer")
           console.log "Removing friends"
 
