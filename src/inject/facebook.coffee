@@ -7,7 +7,13 @@ $ ->
       $(fn(selector)).remove()
 
   # Remove sidebars on the right
-  removeSelectorsById ['pagelet_ego_pane', 'pagelet_ego_contextual_group']
+  removeSelectorsById [
+    'pagelet_ego_pane', 
+    'pagelet_ego_contextual_group', 
+
+    # Remove news feed
+    'topnews_main_stream_408239535924329'
+  ]
 
   removedFriendsYouMayKnow = false
   # Removes people you may know and pages you may like
@@ -23,7 +29,9 @@ $ ->
 
           removeSelectorsById ["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]
 
+          # Remove inline width and height from scroll panel
           $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr "style"
+
           removedFriendsYouMayKnow = true
           clearInterval tid
         else
@@ -31,10 +39,6 @@ $ ->
           tid = setTimeout(removeFriends, 100)
 
       tid = setTimeout(removeFriends, 100)
-
-    # Remove news feed
-    $("#topnews_main_stream_408239535924329").remove()
-
 
   # didScroll = false
 

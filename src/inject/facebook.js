@@ -10,7 +10,7 @@ $(function() {
       return $(fn(selector)).remove();
     });
   };
-  removeSelectorsById(['pagelet_ego_pane', 'pagelet_ego_contextual_group']);
+  removeSelectorsById(['pagelet_ego_pane', 'pagelet_ego_contextual_group', 'topnews_main_stream_408239535924329']);
   removedFriendsYouMayKnow = false;
   return fbRequestsJewel.onclick = function() {
     var removeFriends, tid;
@@ -30,8 +30,7 @@ $(function() {
           return tid = setTimeout(removeFriends, 100);
         }
       };
-      tid = setTimeout(removeFriends, 100);
+      return tid = setTimeout(removeFriends, 100);
     }
-    return $("#topnews_main_stream_408239535924329").remove();
   };
 });
