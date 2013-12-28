@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Removes newsfeed, people you may know, pages you may like, groups you may like",
-  "homepage_url": "www.sumanyusharma.com",
+  "homepage_url": "http://www.sumanyusharma.com",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
