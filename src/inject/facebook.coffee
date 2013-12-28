@@ -1,11 +1,13 @@
 $ ->
-  removeSelectors = (selectors) ->
+  removeSelectorsById = (selectors) ->
+    removeSelectors(selectors, document.getElementById)
+
+  removeSelectors = (selectors, fn) ->
     selectors.forEach (selector) ->
-      $(document.getElementById(selector)).remove()
+      $(fn(selector)).remove()
 
   # Remove sidebars on the right
-  $("#pagelet_ego_pane").remove()
-  $("#pagelet_ego_contextual_group").remove()
+  removeSelectorsById ['pagelet_ego_pane', 'pagelet_ego_contextual_group']
 
   removedFriendsYouMayKnow = false
   # Removes people you may know and pages you may like
@@ -19,7 +21,7 @@ $ ->
         if document.getElementById("fbRequestsPYMKContainer")
           console.log "Removing friends"
 
-          removeSelectors(["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"])
+          removeSelectorsById ["fbRequestsPYMKContainer", "fbRequestsPYMLContainer"]
 
           $(document.getElementsByClassName("jewelWithEgoUnits")[0]).removeAttr "style"
           removedFriendsYouMayKnow = true
