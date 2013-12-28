@@ -6,6 +6,10 @@ $ ->
     selectors.forEach (selector) ->
       $(selector).remove()
 
+  addClickEventListenerToSelectors = (selectors, fn) ->
+    selectors.forEach (selector) ->
+      selector.addEventListener 'click', fn, false    
+
   # Remove sidebars on the right
   removeSelectorsById [
     'pagelet_ego_pane', 
@@ -56,8 +60,8 @@ $ ->
       console.log "Removing newsfeed"
       removeSelectorsById ["topnews_main_stream_408239535924329"]
 
-  # Remove news feed when you click logo
-  pageLogo.addEventListener 'click', removeNewsFeedAfterLoading, false
+  # Remove news feed when you click logo, newsfeed
+  addClickEventListenerToSelectors [navItem_app_4748854339, pageLogo], removeNewsFeedAfterLoading
 
   # didScroll = false
 
