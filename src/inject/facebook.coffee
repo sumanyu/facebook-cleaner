@@ -17,6 +17,8 @@ $ ->
 
     # Remove news feed
     'topnews_main_stream_408239535924329'
+
+    'pagelet_trending_tags_and_topics'
   ]
 
   execAfterLoading = (testBoolean, existenceSelectorId, fn) ->
@@ -62,16 +64,3 @@ $ ->
 
   # Remove news feed when you click logo, newsfeed
   addClickEventListenerToSelectors [navItem_app_4748854339, pageLogo], removeNewsFeedAfterLoading
-
-  # didScroll = false
-
-  # $(window).scroll ->
-  #   timer = undefined
-  #   unless didScroll
-  #     timer = setInterval(->
-  #       if didScroll
-  #         didScroll = false
-  #         clearTimeout timer
-  #         removeGarbage()
-  #     , 250)
-  #   didScroll = true
